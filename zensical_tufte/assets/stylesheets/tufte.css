@@ -1,0 +1,525 @@
+/* The Tufte theme for Zensical. The typography of the built-in theme is
+   restyled for ink on slightly cream paper, in the layout of the built-in
+   theme. Only colors and type are changed here, the components themselves
+   keep their structure. */
+
+@font-face {
+  font-family: "et-book";
+  src: url("../fonts/et-book/et-book-roman-line-figures.woff") format("woff"),
+    url("../fonts/et-book/et-book-roman-line-figures.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "et-book";
+  src: url("../fonts/et-book/et-book-display-italic-old-style-figures.woff") format("woff"),
+    url("../fonts/et-book/et-book-display-italic-old-style-figures.ttf")
+      format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "et-book";
+  src: url("../fonts/et-book/et-book-bold-line-figures.woff") format("woff"),
+    url("../fonts/et-book/et-book-bold-line-figures.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "et-book-roman-old-style";
+  src: url("../fonts/et-book/et-book-roman-old-style-figures.woff") format("woff"),
+    url("../fonts/et-book/et-book-roman-old-style-figures.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The palette holds ink on slightly cream paper, in place of the default
+   grays and the Material indigo accents. */
+:root {
+  --md-default-fg-color: #111111de;
+  --md-default-fg-color--light: #1111118c;
+  --md-default-fg-color--lighter: #11111152;
+  --md-default-fg-color--lightest: #1111110d;
+  --md-default-bg-color: #fffff8;
+  --md-default-bg-color--light: #fffff8b3;
+  --md-default-bg-color--lighter: #fffff84d;
+  --md-default-bg-color--lightest: #fffff81f;
+  --md-primary-fg-color: #111111;
+  --md-primary-fg-color--light: #333333;
+  --md-primary-fg-color--dark: #000000;
+  --md-primary-bg-color: #fffff8;
+  --md-primary-bg-color--light: #fffff8b3;
+  --md-accent-fg-color: #111111;
+  --md-accent-fg-color--transparent: #11111114;
+  --md-accent-bg-color: #fffff8;
+  --md-accent-bg-color--light: #fffff8b3;
+  --tufte-ink: #111111;
+  --tufte-paper: #fffff8;
+  --tufte-rule: #111111;
+
+  /* The general text is set in Karla and the headings in ET Book. */
+  --md-text-font: "Karla", sans-serif;
+  --tufte-heading-font: "et-book", Palatino, "Palatino Linotype",
+    "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  --md-code-font: "Fira Code", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+}
+
+::selection {
+  background: #b4d5fe;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  background: var(--tufte-paper);
+  color: var(--tufte-ink);
+}
+
+/* The measure of the page text follows Tufte CSS. */
+.md-typeset {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.md-typeset p {
+  text-align: justify;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+/* Headings are set in ET Book at regular weight, the section titles in
+   italics. */
+.md-typeset h1 {
+  font-family: var(--tufte-heading-font);
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.2em;
+  margin: 2.1rem 0 1.5rem;
+  color: var(--tufte-ink);
+  letter-spacing: normal;
+}
+
+.md-typeset h2 {
+  font-family: var(--tufte-heading-font);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1;
+  margin: 2.1rem 0 0;
+  color: var(--tufte-ink);
+}
+
+.md-typeset h3 {
+  font-family: var(--tufte-heading-font);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1;
+  margin: 2rem 0 0;
+  color: var(--tufte-ink);
+}
+
+.md-typeset h4 {
+  font-family: var(--tufte-heading-font);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1;
+  margin: 1.8rem 0 0;
+  color: var(--tufte-ink);
+}
+
+.md-typeset h5,
+.md-typeset h6 {
+  font-family: var(--tufte-heading-font);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin: 1.8rem 0 0;
+  color: var(--tufte-ink);
+}
+
+/* A level-six title marks a new thought and is set in small caps. */
+.md-typeset h6 {
+  font-variant: small-caps;
+}
+
+/* Names that a heading quotes from the code keep the code style upright. */
+.md-typeset :is(h1, h2, h3, h4, h5, h6) code {
+  font-style: normal;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+/* Links inherit the color of the text and underline below the descenders. */
+.md-typeset a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+  text-decoration-color: var(--tufte-rule);
+  text-underline-offset: 0.15em;
+}
+
+.md-typeset a:hover {
+  color: #555555;
+}
+
+.md-typeset code,
+.md-typeset kbd,
+.md-typeset pre {
+  font-family: var(--md-code-font-family);
+  font-size: 0.82em;
+}
+
+/* Inline code has no background, like the code spans of Tufte CSS. */
+.md-typeset code {
+  background: transparent;
+  box-shadow: none;
+}
+
+.md-typeset pre > code {
+  line-height: 1.6;
+}
+
+.md-typeset pre {
+  border-radius: 0;
+}
+
+/* Tables follow the booktabs style, with heavy rules above and below and a
+   light rule under the header row. */
+.md-typeset table {
+  border-top: 2px solid var(--tufte-rule);
+  border-bottom: 2px solid var(--tufte-rule);
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.25rem;
+  line-height: 1.71428571;
+}
+
+.md-typeset table th {
+  border-bottom: 1px solid var(--tufte-rule);
+  color: inherit;
+  font-weight: 700;
+}
+
+.md-typeset table td {
+  border-top: 0;
+  color: inherit;
+}
+
+/* A blockquote holds a quotation and does not draw a rule beside it. */
+.md-typeset blockquote {
+  border-left: 0;
+  color: var(--md-default-fg-color--light);
+  font-style: italic;
+  padding-left: 0;
+}
+
+/* The header, the tabs and the footer sit on the paper without a shadow or
+   a colored background. The bar of the header blurs the text that scrolls
+   behind it on a layer of its own, tinted toward the paper. The blur runs
+   at full strength over almost the whole bar, so the text leaves focus
+   before it reaches the title of the page and the widgets of the bar, and
+   only the bottom edge fades, which blends the text into the blur. */
+.md-header {
+  background: transparent;
+  box-shadow: none;
+  color: var(--tufte-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.md-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 248, 0.92) 0%,
+    rgba(255, 255, 248, 0.92) 84%,
+    rgba(255, 255, 248, 0) 100%
+  );
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+}
+
+.md-header[data-md-state="shadow"] {
+  box-shadow: none;
+}
+
+.md-tabs,
+.md-footer,
+.md-banner {
+  background: transparent;
+  color: var(--tufte-ink);
+}
+
+/* The chrome around the page is set larger than the built-in theme, whose
+   sizes assume a 16-pixel root. */
+/* The bar of the header is taller than the built-in one, whose sizes assume
+   a 16-pixel root. */
+.md-header__title {
+  font-size: 1.4rem;
+  height: 3rem;
+  line-height: 3rem;
+}
+
+/* The repository banner of the header lists the repository name and the
+   statistics. */
+.md-source {
+  font-size: 0.9rem;
+}
+
+.md-source__facts {
+  font-size: 0.85rem;
+}
+
+/* The icons of the facts are sized in a fixed unit and aligned to the
+   ascender in the built-in theme, which leaves them beside the digits once
+   the text grows. They are centered on the digits instead. */
+.md-source__fact::before {
+  width: 0.85em;
+  height: 0.85em;
+  vertical-align: middle;
+}
+
+.md-nav {
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.md-nav__title {
+  font-size: 1.1rem;
+}
+
+.md-nav__link .md-typeset {
+  font-size: 1rem;
+}
+
+.md-copyright {
+  font-size: 1.05rem;
+}
+
+.md-footer-meta {
+  background: transparent;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+}
+
+.md-search__form,
+.md-search__input {
+  background: transparent;
+  color: var(--tufte-ink);
+}
+
+/* The search button of the header matches the taller bar. Its icon and the
+   "Ctrl K" bubble are placed in fixed units in the built-in theme, so they
+   are centered against the taller button instead. The button sits above
+   the stretch of the bar where the blur fades out. */
+.md-search__button {
+  font-size: 0.95rem;
+  width: 10rem;
+  height: 2.1rem;
+}
+
+.md-search {
+  margin-bottom: 0.4rem;
+}
+
+.md-search__button::before {
+  top: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  transform: translateY(-50%);
+}
+
+.md-search__button::after {
+  top: 50%;
+  font-size: 0.75rem;
+  transform: translateY(-50%);
+}
+
+/* The repository banner truncates the repository name in a fixed width,
+   which no longer fits the larger text. */
+.md-header__source {
+  width: 14rem;
+  max-width: 14rem;
+}
+
+/* The page title shows above the body text when the reader scrolls and
+   slides in from below. Its left edge sits where the body text starts,
+   which is the width of the sidebar plus the margin of the text, and the
+   nav of the header uses the same grid as the page. The page title is a
+   sibling of the title of the bar, so the active class of the title
+   reaches it through the sibling combinator. The sidebar becomes a drawer
+   on narrow screens, where the body text starts at the margin of the text
+   alone. */
+.md-header__inner {
+  position: relative;
+}
+
+.md-header__topic--page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 13.3rem;
+  right: 32rem;
+  display: flex;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  color: inherit;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1), opacity 0.15s;
+}
+
+.md-header__title--active ~ .md-header__topic--page {
+  z-index: 0;
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 76.25em) {
+  .md-header__topic--page {
+    left: 1.2rem;
+    right: 24rem;
+  }
+}
+
+/* The sidebars clear the bar of the header, which is taller than the one
+   that the built-in theme positions them against. */
+.md-sidebar {
+  top: 3rem;
+}
+
+/* The sites switcher is part of the page title. The current site is the
+   selected entry of the dropdown, and the panel opens below the title and
+   lists the other sites in the same font, without the bold weight of the
+   title. */
+.md-sites {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.md-sites__summary {
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0.4rem;
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  list-style: none;
+}
+
+.md-sites__summary::-webkit-details-marker {
+  display: none;
+}
+
+.md-sites__summary:hover {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-sites__summary svg {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+/* The arrow of the title turns when the panel is open. */
+.md-sites[open] .md-sites__summary svg {
+  transform: rotate(180deg);
+}
+
+.md-sites__list {
+  position: absolute;
+  z-index: 3;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  min-width: 12rem;
+  margin: 0;
+  padding: 0.25rem;
+  list-style-type: none;
+  background: var(--tufte-paper);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.2rem 0.5rem #0000001a;
+  transform-origin: top left;
+  animation: md-sites-in 0.18s ease both;
+}
+
+@keyframes md-sites-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+.md-sites__list li {
+  margin: 0;
+}
+
+.md-sites__link {
+  display: flex;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: inherit;
+  border-radius: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.md-sites__link:hover {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* The grid and the page text are wider than the built-in theme. */
+.md-grid {
+  max-width: 75rem;
+}
+
+/* The page text is kept inside the measure of Tufte CSS. */
+.md-content__inner {
+  max-width: 52rem;
+}

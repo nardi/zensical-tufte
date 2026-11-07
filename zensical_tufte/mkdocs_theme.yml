@@ -1,0 +1,5 @@
+extends: zensical
+
+# The theme loads its fonts itself, so the built-in theme loads none from
+# Google Fonts.
+font: false

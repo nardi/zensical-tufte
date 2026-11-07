@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "zensical-tufte"
+version = "0.1.0"
+description = "A Tufte-style theme extension for Zensical"
+authors = [{ name = "Nardi Lam", email = "mail@nardilam.nl" }]
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["zensical>=0.1.0"]
+
+[tool.hatch.build.targets.wheel]
+include = ["zensical_tufte"]
+
+[project.entry-points."mkdocs.themes"]
+tufte = "zensical_tufte"

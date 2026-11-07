@@ -1,0 +1,24 @@
+{#-
+  The Tufte theme, derived from the built-in Zensical theme. The layout, the
+  navigation and the JavaScript of the built-in theme are kept, and only the
+  fonts and the typography of the pages are restyled.
+-#}
+{% extends "base.html" %}
+
+{% block styles %}
+  {{ super() }}
+  {#- The query prevents browsers from serving a previous copy of the sheet
+      after the theme has changed. -#}
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/tufte.css?v=0.1.0' | url }}">
+{% endblock %}
+
+{% block fonts %}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {#- The query serves the same purpose as the one of the style sheet. -#}
+  <script src="{{ 'assets/javascripts/tufte.js?v=0.1.0' | url }}" defer></script>
+{% endblock %}

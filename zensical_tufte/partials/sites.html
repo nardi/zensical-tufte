@@ -1,0 +1,27 @@
+{#-
+  The dropdown of the page title that switches between the documentation
+  sites of the repositories that share this theme. The title of the site is
+  the selected entry of the dropdown, and the panel lists the other sites.
+  A project opts in by naming its current site under extra.site_switcher,
+  and replaces the site list with its own by setting sites there as well.
+-#}
+{% if config.extra.site_switcher %}
+  {% set switcher = config.extra.site_switcher %}
+  {% set sites = switcher.sites or [
+    "xipopt", "jax-cip", "splineax", "jaxormick", "aulax", "surreax",
+    "pardiso-mkl-jax", "cyhighs", "meson-jll", "polder"
+  ] %}
+  <details class="md-sites" data-md-component="sites">
+    <summary class="md-sites__summary" title="Switch documentation site">
+      <span class="md-ellipsis">{{ switcher.current }}</span>
+      {% include ".icons/lucide/chevron-down.svg" %}
+    </summary>
+    <ul class="md-sites__list">
+      {%- for site in sites %}
+        {%- if site != switcher.current %}
+          <li><a class="md-sites__link" href="/{{ site }}/">{{ site }}</a></li>
+        {%- endif %}
+      {%- endfor %}
+    </ul>
+  </details>
+{% endif %}
