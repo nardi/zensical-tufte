@@ -76,8 +76,6 @@
 
 html {
   font-size: 15px;
-  /* Lets the height of the site switcher transition between 0 and auto. */
-  interpolate-size: allow-keywords;
 }
 
 body {
@@ -509,29 +507,25 @@ body {
     opacity 0.18s ease;
 }
 
-/* The panel folds in and out vertically with a fade. The list carries the
-   fold through max-height, which animates in every browser on open. The
-   ::details-content pseudo-element keeps the list rendered while the closing
-   transition runs, which only browsers that support it do. */
+/* The panel folds in and out vertically with a fade. The fold runs through
+   max-height, which animates on open in browsers that support @starting-style.
+   On close the script applies the closing class while the details element is
+   still open, so the fold runs there as well. */
 .md-sites[open] .md-sites__list {
   max-height: 30em;
   opacity: 1;
 }
 
-.md-sites::details-content {
-  display: block;
-  height: 0;
-  overflow: clip;
+.md-sites[open].md-sites--closing .md-sites__list {
+  max-height: 0;
   opacity: 0;
-  transition:
-    height 0.22s ease,
-    opacity 0.18s ease,
-    content-visibility 0.22s allow-discrete;
 }
 
-.md-sites[open]::details-content {
-  height: auto;
-  opacity: 1;
+@starting-style {
+  .md-sites[open] .md-sites__list {
+    max-height: 0;
+    opacity: 0;
+  }
 }
 
 .md-sites__list li {
