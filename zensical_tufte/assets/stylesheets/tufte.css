@@ -78,6 +78,8 @@
 
 html {
   font-size: 15px;
+  /* Lets the height of the site switcher transition between 0 and auto. */
+  interpolate-size: allow-keywords;
 }
 
 body {
@@ -481,15 +483,25 @@ body {
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.3rem;
   box-shadow: 0 0.2rem 0.5rem #0000001a;
-  transform-origin: top left;
-  animation: md-sites-in 0.18s ease both;
 }
 
-@keyframes md-sites-in {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
+/* The panel folds in and out vertically with a fade. The ::details-content
+   pseudo-element keeps the list rendered while the closing transition runs,
+   which only browsers that support it do. */
+.md-sites::details-content {
+  display: block;
+  height: 0;
+  overflow: clip;
+  opacity: 0;
+  transition:
+    height 0.22s ease,
+    opacity 0.18s ease,
+    content-visibility 0.22s allow-discrete;
+}
+
+.md-sites[open]::details-content {
+  height: auto;
+  opacity: 1;
 }
 
 .md-sites__list li {
