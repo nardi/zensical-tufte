@@ -74,9 +74,9 @@
   background: #b4d5fe;
 }
 
-html {
-  font-size: 15px;
-}
+/* The root font size keeps the built-in value, so the rem-based sizes of the
+   chrome around the page, such as the footer and the path, hold their
+   intended size. The rem sizes in this file are written against that root. */
 
 body {
   background: var(--tufte-paper);
@@ -85,14 +85,14 @@ body {
 
 /* The measure of the page text follows Tufte CSS. */
 .md-typeset {
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.5rem;
 }
 
 .md-typeset p {
   text-align: justify;
-  margin-top: 1.4rem;
-  margin-bottom: 1.4rem;
+  margin-top: 1.05rem;
+  margin-bottom: 1.05rem;
 }
 
 /* Headings are set in Karla at regular weight, the section titles in
@@ -100,9 +100,9 @@ body {
 .md-typeset h1 {
   font-family: var(--md-text-font);
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 2.25rem;
   line-height: 1.2em;
-  margin: 2.1rem 0 1.5rem;
+  margin: 1.575rem 0 1.125rem;
   color: var(--tufte-ink);
   letter-spacing: normal;
 }
@@ -111,9 +111,9 @@ body {
   font-family: var(--md-text-font);
   font-style: italic;
   font-weight: 400;
-  font-size: 2.2rem;
+  font-size: 1.65rem;
   line-height: 1;
-  margin: 2.1rem 0 0;
+  margin: 1.575rem 0 0;
   color: var(--tufte-ink);
 }
 
@@ -121,9 +121,9 @@ body {
   font-family: var(--md-text-font);
   font-style: italic;
   font-weight: 400;
-  font-size: 1.7rem;
+  font-size: 1.275rem;
   line-height: 1;
-  margin: 2rem 0 0;
+  margin: 1.5rem 0 0;
   color: var(--tufte-ink);
 }
 
@@ -131,9 +131,9 @@ body {
   font-family: var(--md-text-font);
   font-style: italic;
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 1.05rem;
   line-height: 1;
-  margin: 1.8rem 0 0;
+  margin: 1.35rem 0 0;
   color: var(--tufte-ink);
 }
 
@@ -142,9 +142,9 @@ body {
   font-family: var(--md-text-font);
   font-style: italic;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   line-height: 1;
-  margin: 1.8rem 0 0;
+  margin: 1.35rem 0 0;
   color: var(--tufte-ink);
 }
 
@@ -205,7 +205,7 @@ body {
   border-bottom: 2px solid var(--tufte-rule);
   border-radius: 0;
   box-shadow: none;
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
   line-height: 1.71428571;
 }
 
@@ -218,6 +218,13 @@ body {
 .md-typeset table:not([class]) td {
   border-top: 0;
   color: inherit;
+}
+
+/* The built-in theme sizes admonitions, collapsible blocks and footnotes in
+   rem against the root. Here they follow the body text, which is larger, so
+   they keep the proportion the built-in theme gives them. */
+.md-typeset :is(.admonition, details, .footnote) {
+  font-size: 0.85em;
 }
 
 /* Figures fill the measure of the text, so the labels inside images stay
@@ -235,7 +242,7 @@ body {
 
 .md-typeset figure figcaption {
   max-width: none;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 /* A blockquote holds a quotation and does not draw a rule beside it. */
@@ -274,14 +281,20 @@ body {
     rgba(255, 255, 248, 0.92) 84%,
     rgba(255, 255, 248, 0) 100%
   );
-  -webkit-backdrop-filter: blur(0.5rem);
-  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.375rem);
+  backdrop-filter: blur(0.375rem);
   -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
 }
 
 .md-header[data-md-state="shadow"] {
   box-shadow: none;
+}
+
+/* The palette is fixed to the paper scheme, so the light and dark switch of
+   the built-in theme is hidden. */
+.md-header__button[for^="__palette"] {
+  display: none !important;
 }
 
 .md-tabs,
@@ -296,19 +309,19 @@ body {
 /* The bar of the header is taller than the built-in one, whose sizes assume
    a 16-pixel root. */
 .md-header__title {
-  font-size: 1.4rem;
-  height: 3rem;
-  line-height: 3rem;
+  font-size: 1.05rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
 }
 
 /* The repository banner of the header lists the repository name and the
    statistics. */
 .md-source {
-  font-size: 0.9rem;
+  font-size: 0.675rem;
 }
 
 .md-source__facts {
-  font-size: 0.85rem;
+  font-size: 0.6375rem;
 }
 
 /* The icons of the facts are sized in a fixed unit and aligned to the
@@ -321,20 +334,20 @@ body {
 }
 
 .md-nav {
-  font-size: 1.05rem;
+  font-size: 0.7875rem;
   line-height: 1.4;
 }
 
 .md-nav__title {
-  font-size: 1.1rem;
+  font-size: 0.825rem;
 }
 
 .md-nav__link .md-typeset {
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .md-copyright {
-  font-size: 1.05rem;
+  font-size: 0.7875rem;
 }
 
 .md-footer-meta {
@@ -354,33 +367,33 @@ body {
    are centered against the taller button instead. The button sits above
    the stretch of the bar where the blur fades out. */
 .md-search__button {
-  font-size: 0.95rem;
-  width: 10rem;
-  height: 2.1rem;
+  font-size: 0.7125rem;
+  width: 7.5rem;
+  height: 1.575rem;
 }
 
 .md-search {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .md-search__button::before {
   top: 50%;
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 0.825rem;
+  height: 0.825rem;
   transform: translateY(-50%);
 }
 
 .md-search__button::after {
   top: 50%;
-  font-size: 0.75rem;
+  font-size: 0.5625rem;
   transform: translateY(-50%);
 }
 
 /* The repository banner truncates the repository name in a fixed width,
    which no longer fits the larger text. */
 .md-header__source {
-  width: 14rem;
-  max-width: 14rem;
+  width: 10.5rem;
+  max-width: 10.5rem;
 }
 
 /* The page title shows above the body text when the reader scrolls and
@@ -399,15 +412,15 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 13.3rem;
-  right: 32rem;
+  left: 9.975rem;
+  right: 24rem;
   display: flex;
   max-width: none;
   margin: 0;
   padding: 0;
   align-items: center;
   color: inherit;
-  font-size: 1.4rem;
+  font-size: 1.05rem;
   font-weight: 400;
   font-style: italic;
   letter-spacing: -0.025em;
@@ -415,7 +428,7 @@ body {
   z-index: -1;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(1rem);
+  transform: translateY(0.75rem);
   transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1), opacity 0.15s;
 }
 
@@ -428,15 +441,15 @@ body {
 
 @media screen and (max-width: 76.25em) {
   .md-header__topic--page {
-    left: 1.2rem;
-    right: 24rem;
+    left: 0.9rem;
+    right: 18rem;
   }
 }
 
 /* The sidebars clear the bar of the header, which is taller than the one
    that the built-in theme positions them against. */
 .md-sidebar {
-  top: 3rem;
+  top: 2.25rem;
 }
 
 /* The sites switcher is part of the page title. The current site is the
@@ -451,18 +464,18 @@ body {
 
 .md-sites__summary {
   display: inline-flex;
-  gap: 0.3rem;
+  gap: 0.225rem;
   align-items: center;
   height: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 0 0.4rem;
+  padding: 0 0.3rem;
   color: inherit;
   font-weight: 700;
   letter-spacing: -0.025em;
   white-space: nowrap;
   cursor: pointer;
-  border-radius: 0.4rem;
+  border-radius: 0.3rem;
   list-style: none;
 }
 
@@ -476,8 +489,8 @@ body {
 
 .md-sites__summary svg {
   flex-shrink: 0;
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 0.825rem;
+  height: 0.825rem;
   transition: transform 0.2s ease;
 }
 
@@ -489,16 +502,16 @@ body {
 .md-sites__list {
   position: absolute;
   z-index: 3;
-  top: calc(100% + 0.4rem);
+  top: calc(100% + 0.3rem);
   left: 0;
-  min-width: 12rem;
+  min-width: 9rem;
   margin: 0;
-  padding: 0.25rem;
+  padding: 0.1875rem;
   list-style-type: none;
   background: var(--tufte-paper);
   border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 0.3rem;
-  box-shadow: 0 0.2rem 0.5rem #0000001a;
+  border-radius: 0.225rem;
+  box-shadow: 0 0.15rem 0.375rem #0000001a;
   max-height: 0;
   overflow: clip;
   opacity: 0;
@@ -534,13 +547,13 @@ body {
 
 .md-sites__link {
   display: flex;
-  padding-top: 0.15rem;
-  padding-bottom: 0.15rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-top: 0.1125rem;
+  padding-bottom: 0.1125rem;
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
   color: inherit;
-  border-radius: 0.3rem;
-  font-size: 1.3rem;
+  border-radius: 0.225rem;
+  font-size: 0.975rem;
   font-weight: 400;
   letter-spacing: -0.025em;
   line-height: 1.4;
@@ -554,10 +567,10 @@ a.md-sites__link:hover {
 
 /* The grid and the page text are wider than the built-in theme. */
 .md-grid {
-  max-width: 75rem;
+  max-width: 56.25rem;
 }
 
 /* The page text is kept inside the measure of Tufte CSS. */
 .md-content__inner {
-  max-width: 52rem;
+  max-width: 39rem;
 }
