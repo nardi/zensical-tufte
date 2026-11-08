@@ -76,5 +76,5 @@ blocks and style sheets only.
 
 The ET Book fonts are by Edward Tufte, Dillon Waugh and ZacharyXB, under the
 MIT license, and are copied from
-[hugo-tuftesque](https://github.com/hugo-tuftesque/hugo-tuftesque), which
+[hugo-tuftesque](https://github.com/st3v3nmw/hugo-tuftesque), which
 also informed the design.
