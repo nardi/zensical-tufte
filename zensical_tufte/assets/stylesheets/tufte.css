@@ -197,8 +197,10 @@ body {
 }
 
 /* Tables follow the booktabs style, with heavy rules above and below and a
-   light rule under the header row. */
-.md-typeset table {
+   light rule under the header row. The built-in theme targets unclassed tables
+   with a more specific selector, so these rules use the same selector and win
+   by source order. */
+.md-typeset table:not([class]) {
   border-top: 2px solid var(--tufte-rule);
   border-bottom: 2px solid var(--tufte-rule);
   border-radius: 0;
@@ -207,13 +209,13 @@ body {
   line-height: 1.71428571;
 }
 
-.md-typeset table th {
+.md-typeset table:not([class]) th {
   border-bottom: 1px solid var(--tufte-rule);
   color: inherit;
   font-weight: 700;
 }
 
-.md-typeset table td {
+.md-typeset table:not([class]) td {
   border-top: 0;
   color: inherit;
 }
