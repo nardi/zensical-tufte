@@ -182,10 +182,12 @@ body {
   font-size: 0.82em;
 }
 
-/* Inline code has no background, like the code spans of Tufte CSS. */
+/* Inline code has no background, like the code spans of Tufte CSS, and sits
+   close to the surrounding text. */
 .md-typeset code {
   background: transparent;
   box-shadow: none;
+  padding: 0 0.15em;
 }
 
 .md-typeset pre > code {
@@ -218,6 +220,24 @@ body {
 .md-typeset table:not([class]) td {
   border-top: 0;
   color: inherit;
+}
+
+/* Figures fill the measure of the text, so the labels inside images stay
+   readable, and captions sit close to the body size. */
+.md-typeset figure {
+  width: 100%;
+}
+
+.md-typeset figure img,
+.md-typeset figure svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.md-typeset figure figcaption {
+  max-width: none;
+  font-size: 1rem;
 }
 
 /* A blockquote holds a quotation and does not draw a rule beside it. */
@@ -481,11 +501,23 @@ body {
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.3rem;
   box-shadow: 0 0.2rem 0.5rem #0000001a;
+  max-height: 0;
+  overflow: clip;
+  opacity: 0;
+  transition:
+    max-height 0.22s ease,
+    opacity 0.18s ease;
 }
 
-/* The panel folds in and out vertically with a fade. The ::details-content
-   pseudo-element keeps the list rendered while the closing transition runs,
-   which only browsers that support it do. */
+/* The panel folds in and out vertically with a fade. The list carries the
+   fold through max-height, which animates in every browser on open. The
+   ::details-content pseudo-element keeps the list rendered while the closing
+   transition runs, which only browsers that support it do. */
+.md-sites[open] .md-sites__list {
+  max-height: 30em;
+  opacity: 1;
+}
+
 .md-sites::details-content {
   display: block;
   height: 0;
