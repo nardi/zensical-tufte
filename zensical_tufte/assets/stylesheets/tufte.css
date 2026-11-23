@@ -396,26 +396,36 @@ body {
   max-width: 10.5rem;
 }
 
-/* The page title shows above the body text when the reader scrolls and
-   slides in from below. Its left edge sits where the body text starts,
-   which is the width of the sidebar plus the margin of the text, and the
-   nav of the header uses the same grid as the page. The page title is a
-   sibling of the title of the bar, so the active class of the title
-   reaches it through the sibling combinator. The sidebar becomes a drawer
-   on narrow screens, where the body text starts at the margin of the text
-   alone. */
-.md-header__inner {
-  position: relative;
+/* The page title shows after the title of the site when the reader scrolls
+   and slides in from below. The two titles are the columns of a grid. The
+   first column is as wide as the distance from the title of the site to the
+   body text, so the page title starts where the body text starts. A name of
+   the site that is wider than this distance widens the column, so the page
+   title never overlaps the switcher. The sidebar becomes a drawer on narrow
+   screens, where the column fits the switcher alone. The page title is a
+   sibling of the title of the site, so the active class of the title
+   reaches it through the sibling combinator. */
+.md-header__titles {
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: minmax(max-content, 10.1rem) minmax(0, 1fr);
+  min-width: 0;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+
+.md-header__titles > .md-header__title {
+  flex-grow: 0;
+  margin: 0;
+  padding-right: 0.6rem;
 }
 
 .md-header__topic--page {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 9.975rem;
-  right: 24rem;
+  position: static;
   display: flex;
+  min-width: 0;
   max-width: none;
+  height: 2.25rem;
   margin: 0;
   padding: 0;
   align-items: center;
@@ -440,9 +450,8 @@ body {
 }
 
 @media screen and (max-width: 76.25em) {
-  .md-header__topic--page {
-    left: 0.9rem;
-    right: 18rem;
+  .md-header__titles {
+    grid-template-columns: max-content minmax(0, 1fr);
   }
 }
 
